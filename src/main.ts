@@ -8,4 +8,4 @@ const game = new ex.Engine ({
   pointerScope: ex.PointerScope.Document
 });
 
-const mainMenu = 
+game.start(mainMenu)

@@ -1,9 +1,65 @@
 import * as ex from 'excalibur';
 
-const mainMenu = new ex.Scene();
-
 // 1. Background Animation Setup
-    // 1.1. Reserve a layer or actor for the animated background. (ex.Actor, ex.ScreenElement)
+// 1.1. Reserve a layer or actor for the animated background. (ex.Actor, ex.ScreenElement)
+class StartButton extends ex.Actor {
+    constructor() {
+        super({
+            x: 400,
+            y: 300,
+            width: 200,
+            height: 50,
+            color: ex.Color.Azure
+        });
+    }
+
+    onInitialize(engine: ex.Engine) {
+        const label = new ex.Label({
+            text: 'Start Game',
+            pos: ex.vec(0, 0),
+            font: new ex.Font({ size: 24, color: ex.Color.Black, family: 'Arial', textAlign: ex.TextAlign.Center, baseAlign: ex.BaseAlign.Middle })
+        });
+        label.anchor.setTo(0.5, 0.5);
+        this.graphics.use(label);
+        this.on('pointerup', () => {
+            engine.goToScene('game'); // Replace 'game' with your actual game scene key
+        });
+        this.enableCapturePointer = true;
+        this.pointer.useGraphicsBounds = true;
+    }
+}
+
+class mainMenu extends ex.Scene {
+    private _startButton!: StartButton;
+
+    public onInitialize(engine: ex.Engine) {
+        // Background (placeholder)
+        const bg = new ex.Actor({
+            x: engine.halfDrawWidth,
+            y: engine.halfDrawHeight,
+            width: engine.drawWidth,
+            height: engine.drawHeight,
+            color: ex.Color.fromHex('#222244')
+        });
+        bg.z = 0;
+        this.add(bg);
+
+        // Title
+        const title = new ex.Label({
+            text: 'Twin Bastions',
+            pos: ex.vec(engine.halfDrawWidth, 120),
+            font: new ex.Font({ size: 48, color: ex.Color.White, family: 'Arial', textAlign: ex.TextAlign.Center, baseAlign: ex.BaseAlign.Middle })
+        });
+        title.anchor.setTo(0.5, 0.5);
+        title.z = 1;
+        this.add(title);
+
+        // Start Button
+        this._startButton = new StartButton();
+        this._startButton.z = 2;
+        this.add(this._startButton);
+    }
+}
 
     // 1.2. Plan where to load and initialize background assets or sprites. (ex.ImageSource, ex.Sprite, ex.Animation)
 
