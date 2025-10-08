@@ -2,7 +2,7 @@ import * as ex from 'excalibur';
 
 // 1. Background Animation Setup
 // 1.1. Reserve a layer or actor for the animated background. (ex.Actor, ex.ScreenElement)
-class StartButton extends ex.Actor {
+export class StartButton extends ex.Actor {
     constructor() {
         super({
             x: 400,
@@ -29,7 +29,7 @@ class StartButton extends ex.Actor {
     }
 }
 
-class mainMenu extends ex.Scene {
+export class mainMenu extends ex.Scene {
     private _startButton!: StartButton;
 
     public onInitialize(engine: ex.Engine) {
