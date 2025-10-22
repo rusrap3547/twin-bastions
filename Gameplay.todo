@@ -1,0 +1,7 @@
+[] Each level is going to be a two dimensional map with a castle on each side.
+[] the enemy in the map will send the soldiers one by one in sequence
+[] Player will let his minions go at will based on a cooldown
+[] Each summon will have its own cool down
+[] The castles will have a set amount of health
+[] The castle will have passive abilites based on what era they are from
+[]
