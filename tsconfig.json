@@ -15,5 +15,5 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true
   },
-  "include": ["./src"]
+  "include": ["./src", "maps/mapLayout.ts", "maps/mapOptions"]
 }
